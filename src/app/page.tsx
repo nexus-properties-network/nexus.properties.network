@@ -1,3 +1,5 @@
+import { NexusHomepage } from "@/components/nexus-homepage";
+
 const assetBase = "/nexus-assets";
 
 import { AIDirectory } from "@/components/ai-directory";
@@ -30,7 +32,7 @@ const faqs = [
 
 function Arrow() { return <span aria-hidden="true">-&gt;</span>; }
 
-export default function HomePage() {
+function LegacyHomePage() {
   return (
     <main>
       <section className="hero-section" id="top">
@@ -84,3 +86,5 @@ export default function HomePage() {
     </main>
   );
 }
+
+export default NexusHomepage;
