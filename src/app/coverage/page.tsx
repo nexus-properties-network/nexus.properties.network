@@ -1,0 +1,8 @@
+import Link from "next/link";
+import { PublicPage } from "@/components/public-page";
+
+const provinces = [["Punjab", "Lahore, Rawalpindi, Faisalabad, Multan and connected growth corridors."], ["Sindh", "Karachi and the markets shaping the next property cycle."], ["Khyber Pakhtunkhwa", "Peshawar, Abbottabad, Mardan and surrounding areas."], ["Balochistan", "Quetta, Gwadar and emerging national corridors."], ["Islamabad Capital Territory", "Capital-region properties, communities, and intelligence."], ["Gilgit-Baltistan", "Northern markets and investment opportunities."], ["Azad Kashmir", "Connected local property and area intelligence."]] as const;
+
+export default function CoveragePage() {
+  return <PublicPage eyebrow="National property graph" title={<>One network across <em>Pakistan.</em></>} description="Browse provinces, cities, areas, properties, agents, and local intelligence through a structured journey. Counts remain evidence-based and are never invented."><section className="public-section"><div className="coverage-stats"><div className="coverage-stat"><strong>130+</strong><span>Cities supported</span></div><div className="coverage-stat"><strong>5,000+</strong><span>Areas supported</span></div><div className="coverage-stat"><strong>7</strong><span>Navigation regions</span></div><div className="coverage-stat"><strong>AI</strong><span>Area intelligence</span></div></div><div className="info-grid" style={{ marginTop: 30 }}>{provinces.map(([name, description]) => <article className="info-card" key={name}><span className="info-index">NETWORK REGION</span><h3>{name}</h3><p>{description}</p><Link href={`/coverage/${name.toLowerCase().replaceAll(" ", "-")}`}>Explore network <span>-&gt;</span></Link></article>)}</div></section></PublicPage>;
++}
