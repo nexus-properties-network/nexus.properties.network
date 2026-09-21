@@ -1,0 +1,11 @@
+import Link from "next/link";
+
+const publicLinks = [["Home", "/"], ["Properties", "/properties"], ["Agents", "/agents"], ["Coverage Areas", "/coverage-areas"], ["Lead Protection", "/lead-protection"], ["AI Assistants", "/ai-assistants"], ["Pricing", "/pricing"], ["FAQ", "/faq"], ["Contact", "/contact"]] as const;
+
+export function PublicPage({ eyebrow, title, description, children }: Readonly<{ eyebrow: string; title: string; description: string; children: React.ReactNode }>) {
+  return <main className="public-page"><header className="public-header"><Link className="public-logo" href="/"><img src="/nexus-assets/transparentlogo.png" alt="Nexus Property Network" /></Link><nav className="public-nav">{publicLinks.map(([label, href]) => <Link href={href} key={label}>{label}</Link>)}</nav><div className="public-auth"><Link href="/login">Login</Link><Link className="button button-dark" href="/register">Register <span>-&gt;</span></Link></div></header><section className="public-hero"><div><p className="kicker">{eyebrow}</p><h1>{title}</h1><p>{description}</p><div className="hero-actions"><Link className="button button-primary" href="/register">Get Started <span>-&gt;</span></Link><Link className="button button-outline" href="/">Explore Nexus</Link></div></div></section>{children}<footer className="public-footer"><div><img src="/nexus-assets/transparentlogo.png" alt="Nexus Property Network" /><p>Pakistan&apos;s first smart property lead network. Connecting sellers, buyers and trusted agents across Pakistan.</p></div><div><strong>Explore</strong>{publicLinks.slice(1, 6).map(([label, href]) => <Link href={href} key={label}>{label}</Link>)}</div><div><strong>Contact</strong><a href="tel:03299669565">0329-9669565</a><a href="mailto:nexus.pakistan.properties@gmail.com">nexus.pakistan.properties@gmail.com</a><span>Lahore, Pakistan</span></div></footer></main>;
+}
+
+export function InfoGrid({ items }: Readonly<{ items: readonly (readonly [string, string])[] }>) {
+  return <div className="info-grid">{items.map(([heading, text]) => <article className="info-card" key={heading}><span className="info-index">NEXUS</span><h3>{heading}</h3><p>{text}</p><Link href="/register">Explore <span>-&gt;</span></Link></article>)}</div>;
+}

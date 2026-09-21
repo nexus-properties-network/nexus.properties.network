@@ -1,0 +1,16 @@
+"use client";
+
+import { useMemo, useState } from "react";
+import { pakistanCities, popularAreasByCity, propertyCategories, propertyIntents, userCategories } from "@/config/nexus-data";
+
+export function PropertyDiscovery() {
+  const [city, setCity] = useState("");
+  const [area, setArea] = useState("");
+  const [category, setCategory] = useState("");
+  const [intent, setIntent] = useState("");
+  const [userType, setUserType] = useState("");
+  const areas = useMemo(() => city ? (popularAreasByCity[city] ?? ["All popular areas", `${city} city centre`, `${city} outskirts`]) : [], [city]);
+  const subcategories = category ? propertyCategories[category as keyof typeof propertyCategories] : [];
+
+  return <section className="discovery-section section-padding" id="property-discovery"><div className="section-intro"><p className="kicker">130+ Cities · 5,000+ Areas</p><h2>Find the right property, <em>faster.</em></h2><p>Choose a city, area, property type, and intent to narrow the network to what matters to you.</p></div><div className="discovery-grid"><label>City<select value={city} onChange={(event) => { setCity(event.target.value); setArea(""); }}><option value="">Select a city</option>{pakistanCities.map((item) => <option key={item}>{item}</option>)}</select></label><label>Area location<select value={area} onChange={(event) => setArea(event.target.value)} disabled={!city}><option value="">{city ? "Select a popular area" : "Select city first"}</option>{areas.map((item) => <option key={item}>{item}</option>)}</select></label><label>Property category<select value={category} onChange={(event) => setCategory(event.target.value)}><option value="">All categories</option>{Object.keys(propertyCategories).map((item) => <option key={item}>{item}</option>)}</select></label><label>Property type<select disabled={!category}><option>{category ? "Select property type" : "Select category first"}</option>{subcategories.map((item) => <option key={item}>{item}</option>)}</select></label><label>What are you looking to do?<select value={intent} onChange={(event) => setIntent(event.target.value)}><option value="">Select intent</option>{propertyIntents.map((item) => <option key={item}>{item}</option>)}</select></label><label>Your role<select value={userType} onChange={(event) => setUserType(event.target.value)}><option value="">Select user type</option>{userCategories.map((item) => <option key={item}>{item}</option>)}</select></label></div><div className="discovery-filters"><label>Bedrooms<select><option>Any bedrooms</option><option>1+</option><option>2+</option><option>3+</option><option>4+</option></select></label><label>Bathrooms<select><option>Any bathrooms</option><option>1+</option><option>2+</option><option>3+</option></select></label><label>Facilities<select><option>Any facilities</option><option>Parking</option><option>Security</option><option>Electricity backup</option><option>Water access</option><option>Furnished</option></select></label><button className="button button-primary">Search network <span>-&gt;</span></button></div><div className="discovery-summary">{city || area || category || intent ? <span>{[city, area, category, intent].filter(Boolean).join(" · ")}</span> : <span>Start with a city to explore verified property opportunities.</span>}<strong>130+ cities connected</strong></div></section>;
+}

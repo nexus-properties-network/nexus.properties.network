@@ -1,0 +1,3 @@
+import { InfoGrid, PublicPage } from "@/components/public-page";
+const items = [["Market intelligence", "Signals and stories from the cities, societies, and property categories shaping Pakistan."], ["Trust in practice", "How verification, lead protection, and transparent workflows improve real transactions."], ["Network updates", "Product releases, coverage milestones, and new tools from the Nexus team."] ] as const;
+export default function NewsroomPage() { return <PublicPage eyebrow="Nexus newsroom" title={<>The property network, <em>in focus.</em></>} description="Read the latest market briefs, product updates, and ideas behind more trusted property transactions."><section className="public-section"><InfoGrid items={items} /></section></PublicPage>; }
