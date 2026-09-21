@@ -1,13 +1,13 @@
 export type NexusRole = "buyer" | "seller" | "agent" | "agency" | "investor" | "developer" | "industrial" | "corporate" | "government";
-];
 
-export const pricingPolicy = {
-  currency: "PKR",
-  yearlyDiscount: "Pay yearly and receive approximately two months free.",
-  leadLockFee: 500,
-  dealLockFees: { small: 500, medium: 1500, large: 3000, enterprise: 5000 },
-  verificationFees: { basic: 500, advanced: 1000, corporate: 5000, project: 10000 },
-} as const;
+export interface NexusPlan {
+  name: string;
+  monthly: number | "Custom";
+  yearly: number | "Custom";
+  audience: NexusRole[];
+  features: string[];
+}
+
 export const nexusPlans: NexusPlan[] = [
   { name: "Buyer Free", monthly: 0, yearly: 0, audience: ["buyer"], features: ["Property search", "Saved properties", "Buyer AI guidance"] },
   { name: "Buyer Premium", monthly: 1500, yearly: 15000, audience: ["buyer"], features: ["Advanced search", "Area intelligence", "Protected deal tracking"] },
@@ -19,12 +19,12 @@ export const nexusPlans: NexusPlan[] = [
   { name: "Industrial Professional", monthly: 25000, yearly: 250000, audience: ["industrial"], features: ["Industrial assets", "Verification workflows", "Industrial AI"] },
   { name: "Corporate Professional", monthly: 50000, yearly: 500000, audience: ["corporate"], features: ["Portfolio management", "Asset intelligence", "Corporate workflows"] },
   { name: "Government Custom", monthly: "Custom", yearly: "Custom", audience: ["government"], features: ["Read-only intelligence", "Regulatory monitoring", "National reporting"] },
-+];
-+
-+export const pricingPolicy = {
-+  currency: "PKR",
-+  yearlyDiscount: "Pay yearly and receive approximately two months free.",
-+  leadLockFee: 500,
-+  dealLockFees: { small: 500, medium: 1500, large: 3000, enterprise: 5000 },
-+  verificationFees: { basic: 500, advanced: 1000, corporate: 5000, project: 10000 },
-+} as const;
+];
+
+export const pricingPolicy = {
+  currency: "PKR",
+  yearlyDiscount: "Pay yearly and receive approximately two months free.",
+  leadLockFee: 500,
+  dealLockFees: { small: 500, medium: 1500, large: 3000, enterprise: 5000 },
+  verificationFees: { basic: 500, advanced: 1000, corporate: 5000, project: 10000 },
+} as const;
