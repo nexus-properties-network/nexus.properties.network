@@ -1,3 +1,13 @@
+"use client";
+
+import { useMemo, useState } from "react";
 import { PublicPage } from "@/components/public-page";
-const questions = ["What is Nexus Property Network?", "Is seller listing free?", "Do sellers need a subscription?", "What documents are required to list?", "How does AI Property Verification work?", "How does Lead Lock work?", "Why does Lead Lock cost PKR 1,000?", "How do agents get leads?", "Which cities does Nexus cover?", "How does Nexus protect buyers and sellers?"];
-export default function FAQPage() { return <PublicPage eyebrow="Quick answers" title={<>Everything you need to know about <em>Nexus.</em></>} description="Understand how the verified property network works for buyers, sellers, agents, investors, and partners."><section className="public-section faq-page-list">{questions.map((question) => <details key={question}><summary>{question}<span>+</span></summary><p>Nexus combines verified properties, qualified participants, AI-assisted workflows, and lead protection so every party can move with more confidence. Contact our team for help with your specific situation.</p></details>)}</section></PublicPage>; }
+import { faqCategories, nexusFAQ } from "@/config/faq-knowledge-base";
+
+export default function FAQPage() {
+	const [query, setQuery] = useState("");
+	const [category, setCategory] = useState("All");
+	const visible = useMemo(() => nexusFAQ.filter((entry) => (category === "All" || entry.category === category) && `${entry.question} ${entry.answer}`.toLowerCase().includes(query.toLowerCase())), [category, query]);
+
+	return <PublicPage eyebrow={`${nexusFAQ.length} constitutional answers`} title={<>The NEXUS knowledge <em>base.</em></>} description="Understand the platform, its workflows, AI boundaries, verification principles, approved pricing, and the rules that protect participants across the property ecosystem."><section className="public-section faq-page-list"><div className="faq-controls"><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search the NEXUS FAQ" aria-label="Search the NEXUS FAQ" /><select value={category} onChange={(event) => setCategory(event.target.value)} aria-label="Filter FAQ category"><option>All</option>{faqCategories.map((item) => <option key={item}>{item}</option>)}</select></div><p className="faq-result-count">Showing {visible.length} of {nexusFAQ.length} constitutional answers.</p>{visible.map((entry) => <details key={entry.id}><summary><span className="faq-number">Q{entry.id}</span><span>{entry.question}</span><b>+</b></summary><p>{entry.answer}</p></details>)}</section></PublicPage>;
+}

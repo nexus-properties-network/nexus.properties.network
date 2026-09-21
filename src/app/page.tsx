@@ -2,6 +2,7 @@ const assetBase = "/nexus-assets";
 
 import { AIDirectory } from "@/components/ai-directory";
 import { PropertyDiscovery } from "@/components/property-discovery";
+import { nexusFAQ } from "@/config/faq-knowledge-base";
 
 const societies = [
   { name: "DHA Lahore", city: "Lahore", image: `${assetBase}/dha.png` },
@@ -21,12 +22,7 @@ const benefits = [
   ["Human-Controlled AI", "AI accelerates judgment but never invents data or silently approves high-stakes actions."],
 ];
 
-const faqs = [
-  "What is Nexus OS?", "How is Nexus different from a property portal?", "How are listings verified?",
-  "What documents are required to list?", "What can the 54 AI Employees do?", "How does AI Admin supervise them?",
-  "How does Lead Lock protect ownership?", "How are deals monitored?", "Which cities does Nexus cover?",
-  "When does a request require human review?",
-];
+const faqs = nexusFAQ.slice(0, 10);
 
 function Arrow() { return <span aria-hidden="true">-&gt;</span>; }
 
@@ -78,7 +74,7 @@ function LegacyHomePage() {
 
       <section className="plans-section section-padding" id="plans"><div className="section-intro centered"><p className="kicker">Simple Plans</p><h2>Choose Your <em>Plan</em></h2></div><div className="plans-grid">{[["Starter", "PKR 500", "10 Credits", "1 Coverage Area"], ["Professional", "PKR 1,500", "50 Credits", "Multiple Areas"], ["Business", "PKR 3,000", "Unlimited Credits", "All Areas"]].map(([name, price, credits, areas], index) => <article className={`plan-card ${index === 1 ? "featured-plan" : ""}`} key={name}>{index === 1 && <span className="popular">Most Popular</span>}<h3>{name}</h3><strong>{price}<small>/month</small></strong><p>{credits}</p><p>{areas}</p><p>Lead Protection</p><p>Verified Badge</p><a className="button button-outline" href="/pricing">View Plans</a></article>)}</div></section>
 
-      <section className="faq-section section-padding" id="faq"><div className="section-intro centered"><p className="kicker">Quick Answers</p><h2>Frequently Asked <em>Questions</em></h2></div><div className="faq-list">{faqs.map((question) => <details key={question}><summary>{question}<span>+</span></summary><p>Our team is building a verified, AI-powered answer for every part of the property journey. Contact us for more information about this topic.</p></details>)}</div><a className="text-link" href="#faq">View All FAQs <Arrow /></a></section>
+      <section className="faq-section section-padding" id="faq"><div className="section-intro centered"><p className="kicker">Constitutional knowledge base</p><h2>Frequently Asked <em>Questions</em></h2><p>Distinct answers covering the platform, trust, AI workforce, workflows, governance, and commercial model.</p></div><div className="faq-list">{faqs.map((entry) => <details key={entry.id}><summary>{entry.question}<span>+</span></summary><p>{entry.answer}</p></details>)}</div><a className="text-link" href="/faq">View all {nexusFAQ.length} answers <Arrow /></a></section>
 
       <footer className="footer" id="footer"><div className="footer-cta" id="join"><p className="kicker">Ready to join Pakistan&apos;s largest AI Property Network?</p><h2>Build your next deal with <em>Nexus.</em></h2><p>130+ cities. 5,000+ areas. AI-verified listings. Lead protection. Join thousands of sellers, buyers and agents already on Nexus.</p><div className="hero-actions"><a className="button button-primary" href="/list-property">List My Property Free</a><a className="button button-outline" href="/register?role=agent">Join As Agent</a></div></div><div className="footer-grid"><div><img className="footer-logo" src={`${assetBase}/transparentlogo.png`} alt="Nexus Property Network" /><p>Pakistan&apos;s first smart property lead network. Connecting sellers, buyers and trusted agents across Pakistan.</p></div><div><h4>Quick Links</h4><a href="/search">Properties</a><a href="/coverage">Coverage Areas</a><a href="/lead-protection">Lead Protection</a><a href="#process">How It Works</a></div><div><h4>Platform</h4><a href="/pricing">Pricing</a><a href="/faq">FAQ</a><a href="/contact">Contact</a><a href="/login">Login</a></div><div><h4>Contact Us</h4><a href="tel:03299669565">0329-9669565</a><a href="https://wa.me/923140073794">0314-0073794 (WhatsApp)</a><a href="mailto:nexus.pakistan.properties@gmail.com">nexus.pakistan.properties@gmail.com</a><span>Lahore, Pakistan</span></div></div><div className="footer-bottom"><span>© 2026 Nexus Property Network. All Rights Reserved.</span><span><a href="/contact">Privacy Policy</a><a href="/contact">Terms of Service</a></span></div></footer>
     </main>

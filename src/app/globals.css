@@ -97,6 +97,18 @@
 .public-plan p { padding:10px 0; margin:0; border-top:1px solid var(--line); color:var(--muted); font-size:.75rem; }
 .public-plan .button { width:100%; margin-top:20px; }
 .faq-page-list { max-width:880px; }
+.faq-controls { display:grid; grid-template-columns:1fr 260px; gap:12px; margin-bottom:14px; }
+.faq-controls input,.faq-controls select { width:100%; padding:14px 16px; border:1px solid var(--line); border-radius:999px; outline:none; background:var(--paper); color:var(--ink); font:inherit; font-size:.76rem; }
+.faq-result-count { margin:0 0 18px; color:var(--muted); font-size:.72rem; }
+.faq-page-list summary { align-items:center; }
+.faq-page-list summary>span:nth-child(2) { flex:1; }
+.faq-number { min-width:32px; color:var(--green); font-size:.64rem; font-weight:800; }
+.pricing-addons { margin-top:30px; padding:28px; border:1px solid var(--line); background:var(--cream); }
+.pricing-addons h2 { margin-bottom:12px; font-size:2rem; }
+.pricing-addons p { margin:0; color:var(--muted); font-size:.8rem; line-height:1.8; }
+.pkr-price { font-family:'DM Sans',sans-serif!important; font-size:2rem!important; font-weight:800; letter-spacing:-.03em; }
+.pkr-price small { font-family:'DM Sans',sans-serif; font-size:.7rem; font-weight:500; }
+.annual-price { color:var(--green)!important; font-weight:700; }
 .faq-page-list details { border-top:1px solid #bfd0bf; border-bottom:0; }
 .faq-page-list details:last-child { border-bottom:1px solid #bfd0bf; }
 .faq-page-list summary { padding:22px 0; font-size:.9rem; }
@@ -158,7 +170,7 @@
 .workspace-content .discovery-section { padding:0 0 30px; background:transparent; }
 .workspace-content .discovery-section .section-intro { margin-bottom:22px; }
 .workspace-content .discovery-section .discovery-grid { padding:18px; }
-@media (max-width:900px) { .public-nav { display:none; } .info-grid,.public-plans { grid-template-columns:repeat(2,1fr); } .contact-grid { grid-template-columns:1fr; gap:35px; } }
+@media (max-width:900px) { .public-nav { display:none; } .info-grid,.public-plans { grid-template-columns:repeat(2,1fr); } .contact-grid { grid-template-columns:1fr; gap:35px; } .faq-controls { grid-template-columns:1fr; } }
 @media (max-width:900px) { .discovery-grid { grid-template-columns:repeat(2,1fr); } .ai-directory-grid { grid-template-columns:repeat(2,1fr); } }
 @media (max-width:560px) { .public-header { padding-inline:18px; } .public-auth>a:first-child { display:none; } .public-hero { min-height:520px; padding-inline:18px; } .public-section { padding:75px 18px; } .info-grid,.public-plans { grid-template-columns:1fr; } .public-footer { grid-template-columns:1fr 1fr; gap:30px 18px; padding-inline:18px; } .public-footer>div:first-child { grid-column:1/-1; } .auth-card { padding:26px; } .discovery-grid,.discovery-filters,.ai-directory-grid { grid-template-columns:1fr; } .discovery-summary,.ai-directory-toolbar { align-items:flex-start; flex-direction:column; } .ai-select,.ai-directory-toolbar input { width:100%; } }
 
